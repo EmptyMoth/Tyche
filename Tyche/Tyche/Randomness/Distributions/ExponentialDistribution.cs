@@ -1,9 +1,13 @@
 ﻿namespace Tyche.Randomness;
 
-public class ExponentialDistribution : IContinuousDistribution
+public class ExponentialDistribution : AbstractContinuousDistribution
 {
-    public double Generate(Random random, long minValue, long maxValue)
+    public readonly double Lambda;
+
+    public ExponentialDistribution(double lambda = 1.0)
     {
-        throw new NotImplementedException();
+        Lambda = lambda;
     }
+    
+    protected override double MakeDistributionValue(double value) => -Math.Log(value) / Lambda;
 }
