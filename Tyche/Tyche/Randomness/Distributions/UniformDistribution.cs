@@ -1,9 +1,6 @@
 ﻿namespace Tyche.Randomness;
 
-public class UniformDistribution : IContinuousDistribution
+public class UniformDistribution : AbstractContinuousDistribution
 {
-    public double Generate(Random random, long minValue, long maxValue)
-    {
-        throw new NotImplementedException();
-    }
+    protected override double MakeDistributionValue(double value) => value;
 }
