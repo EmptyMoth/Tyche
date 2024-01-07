@@ -43,7 +43,7 @@ partial class Form1
         label_Min = new Label();
         label_Max = new Label();
         numericUpDown_Max = new NumericUpDown();
-        button1 = new Button();
+        button_GenerateRandomValue = new Button();
         ((System.ComponentModel.ISupportInitialize)numericUpDown_Min).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown_Max).BeginInit();
         SuspendLayout();
@@ -118,9 +118,9 @@ partial class Form1
         // 
         button_Generate.Location = new Point(15, 284);
         button_Generate.Name = "button_Generate";
-        button_Generate.Size = new Size(102, 40);
+        button_Generate.Size = new Size(138, 40);
         button_Generate.TabIndex = 9;
-        button_Generate.Text = "GENERATE";
+        button_Generate.Text = "GENERATE DISTRIBUTION VALUE";
         button_Generate.UseVisualStyleBackColor = true;
         button_Generate.Click += button_Generate_Click;
         // 
@@ -177,22 +177,22 @@ partial class Form1
         numericUpDown_Max.TabIndex = 15;
         numericUpDown_Max.ValueChanged += numericUpDown_Max_ValueChanged;
         // 
-        // button1
+        // button_GenerateRandomValue
         // 
-        button1.Location = new Point(165, 292);
-        button1.Name = "button1";
-        button1.Size = new Size(113, 23);
-        button1.TabIndex = 16;
-        button1.Text = "button1";
-        button1.UseVisualStyleBackColor = true;
-        button1.Click += button1_Click;
+        button_GenerateRandomValue.Location = new Point(167, 284);
+        button_GenerateRandomValue.Name = "button_GenerateRandomValue";
+        button_GenerateRandomValue.Size = new Size(136, 40);
+        button_GenerateRandomValue.TabIndex = 16;
+        button_GenerateRandomValue.Text = "GENERATE RANDOM VALUE";
+        button_GenerateRandomValue.UseVisualStyleBackColor = true;
+        button_GenerateRandomValue.Click += button_GenerateRandomValue_Click;
         // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(333, 399);
-        Controls.Add(button1);
+        Controls.Add(button_GenerateRandomValue);
         Controls.Add(numericUpDown_Max);
         Controls.Add(label_Max);
         Controls.Add(label_Min);
@@ -232,5 +232,5 @@ partial class Form1
     private Label label_Min;
     private Label label_Max;
     private NumericUpDown numericUpDown_Max;
-    private Button button1;
+    private Button button_GenerateRandomValue;
 }

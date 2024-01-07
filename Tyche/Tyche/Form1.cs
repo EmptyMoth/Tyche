@@ -95,7 +95,7 @@ public partial class Form1 : Form
 
     private void button_Generate_Click(object sender, EventArgs e)
     {
-        textBox_Answer.Text = Engine.GenerateValue(min, max).ToString();
+        textBox_Answer.Text = Engine.GenerateDistributionValue(min, max).ToString();
     }
 
     private void numericUpDown_Min_ValueChanged(object sender, EventArgs e)
@@ -108,8 +108,8 @@ public partial class Form1 : Form
         max = (int)numericUpDown_Max.Value;
     }
 
-    private void button1_Click(object sender, EventArgs e)
+    private void button_GenerateRandomValue_Click(object sender, EventArgs e)
     {
-        textBox_Answer.Text = Engine.RandomValue(min, max).ToString();
+        textBox_Answer.Text = Engine.GenerateRandomValue(min, max).ToString();
     }
 }
