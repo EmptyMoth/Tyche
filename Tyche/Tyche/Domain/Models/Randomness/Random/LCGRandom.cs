@@ -1,19 +1,20 @@
-﻿namespace Tyche.Randomness;
+﻿namespace Tyche.Domain.Models;
 
 public class LCGRandom : Random
 {
     private ulong State { get; set; }
-    
+
     private const uint Multiplier = 7141;
     private const uint Increment = 54773;
     private const uint Mod = 259200;
     private const double DoubleConvertMultiplier = 1.0d / Multiplier;
 
     public LCGRandom() : this((ulong)Environment.TickCount64) { }
-    
+
     public LCGRandom(ulong seed) => Initialization(seed);
 
     public override int Next() => (int)(NextUInt() >>> 1);
+    public override int Next(int min, int max) => (Next() % (max - min + 1)) + min;
 
     public uint NextUInt()
     {
