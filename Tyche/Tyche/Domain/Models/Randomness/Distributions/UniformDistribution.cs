@@ -1,4 +1,4 @@
-﻿namespace Tyche.Randomness;
+﻿namespace Tyche.Domain.Models;
 
 public class UniformDistribution : AbstractContinuousDistribution
 {

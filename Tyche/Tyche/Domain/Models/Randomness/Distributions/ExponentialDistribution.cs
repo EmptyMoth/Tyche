@@ -1,4 +1,4 @@
-﻿namespace Tyche.Randomness;
+﻿namespace Tyche.Domain.Models;
 
 public class ExponentialDistribution : AbstractContinuousDistribution
 {
@@ -8,6 +8,6 @@ public class ExponentialDistribution : AbstractContinuousDistribution
     {
         Lambda = lambda;
     }
-    
+
     protected override double MakeDistributionValue(double value) => -Math.Log(value) / Lambda;
 }
