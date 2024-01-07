@@ -75,7 +75,7 @@ namespace Tyche.Domain.Application
             SelectedRandom = randomType;
         }
 
-        public static long GenerateValue(long minValue, long maxValue) => distribution.Generate(random, minValue, maxValue);
-        public static long RandomValue(long minValue, long maxValue) => random.Next((int)minValue, (int)maxValue);
+        public static long GenerateDistributionValue(long minValue, long maxValue) => distribution.Generate(random, minValue, maxValue);
+        public static long GenerateRandomValue(long minValue, long maxValue) => random.Next((int)minValue, (int)maxValue);
     }
 }
