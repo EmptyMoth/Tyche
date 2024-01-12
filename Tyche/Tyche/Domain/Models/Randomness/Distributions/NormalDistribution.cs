@@ -23,5 +23,5 @@ public class NormalDistribution : AbstractContinuousDistribution
     }
 
     protected double MakeDistributionValue(double u, double v) =>
-        Math.Sqrt(-2 * Math.Log(u)) * Math.Cos(2 * Math.PI * v) * Sigma + Mean;
+        Math.Sqrt(-2 * Math.Log(1.0 - u)) * Math.Sin(2 * Math.PI * (1.0 - v)) * Sigma + Mean;
 }

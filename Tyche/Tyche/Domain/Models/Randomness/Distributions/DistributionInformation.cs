@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Tyche.Domain.Application.Engine;
 
-namespace Tyche.Domain.UI
+namespace Tyche.Domain.Models
 {
     public class DistributionInformation
     {

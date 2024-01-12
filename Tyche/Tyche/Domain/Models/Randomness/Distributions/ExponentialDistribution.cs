@@ -9,5 +9,5 @@ public class ExponentialDistribution : AbstractContinuousDistribution
         Lambda = lambda;
     }
 
-    protected override double MakeDistributionValue(double value) => -Math.Log(value) / Lambda;
+    protected override double MakeDistributionValue(double value) => -Math.Log(1.0 - value) / Lambda;
 }
