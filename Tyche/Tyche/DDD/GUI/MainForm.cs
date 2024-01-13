@@ -1,23 +1,31 @@
-using Tyche.Domain.Application;
 using static System.Net.Mime.MediaTypeNames;
 using Ninject.Modules;
-using Tyche.Domain.Models;
 using Ninject;
+using Tyche.Domain.GUI;
+using System;
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Runtime.CompilerServices;
+using Tyche.DDD.Application;
 
-namespace Tyche;
+namespace Tyche.Domain.GUI;
 
-public partial class MainForm : Form
+public partial class MainForm : Form, IObservable<Form>
 {
-    private static RandomInformation currentRandom;
-    private static DistributionInformation currentDistribution;
-    private static List<DistributionInformation> distributions;
-    private static List<RandomInformation> randoms;
-    private static int min;
-    private static int max;
+    private RandomInformation currentRandom;
+    private DistributionInformation currentDistribution;
+    private List<DistributionInformation> distributions;
+    private List<RandomInformation> randoms;
     private Engine engine;
+    private List<IObserver<Form>> observers;
+    private List<Subscription<Form>> subscriptions;
+    private int min;
+    private int max;
+
     public MainForm(Engine engine)
     {
         this.engine = engine;
+        observers = new List<IObserver<Form>>();
+        subscriptions = new List<Subscription<Form>>();
         InitializeComponent();
         FillRandomInformation();
         FillDistributionInformation();
@@ -86,12 +94,38 @@ public partial class MainForm : Form
     {
         textBox_Answer.Text = engine.GenerateRandomValue(min, max, currentRandom.Type).ToString();
     }
+
+    private void button_Settings_Click(object sender, EventArgs e)
+    {
+        Notify(this);
+    }
+
+    public IDisposable Subscribe(IObserver<Form> observer)
+    {
+        if (!observers.Contains(observer))
+            observers.Add(observer);
+        var subscription = new Subscription<Form>(this, observer, observers);
+        subscriptions.Add(subscription);
+        return subscription;
+    }
+
+    private void Notify(Form form)
+    {
+        foreach (var observer in observers)
+            observer.OnNext(form);
+    }
+
+    private void textBox_Answer_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
 
-public class EngineModule : NinjectModule
+public class GuiModule : NinjectModule
 {
     public override void Load()
     {
-        Bind<MainForm>().ToSelf().InSingletonScope();
+        Bind<MainForm>().ToSelf();
+        Bind<SettingsForm>().ToSelf();
     }
 }

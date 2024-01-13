@@ -1,4 +1,4 @@
-﻿namespace Tyche.Domain.Models;
+﻿namespace Tyche.DDD.Domain.Models.Randomness.Distributions;
 
 public class ExponentialDistribution : AbstractContinuousDistribution
 {

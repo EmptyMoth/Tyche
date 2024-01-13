@@ -1,6 +1,7 @@
-﻿namespace Tyche.Domain.Models;
+﻿
+namespace Tyche.DDD.Domain.Models.Randomness.Random;
 
-public class LCGRandom : Random
+public class LCGRandom : System.Random
 {
     private ulong State { get; set; }
 
@@ -14,15 +15,15 @@ public class LCGRandom : Random
     public LCGRandom(ulong seed) => Initialization(seed);
 
     public override int Next() => (int)(NextUInt() >>> 1);
-    public override int Next(int min, int max) => (Next() % (max - min + 1)) + min;
+    public override int Next(int min, int max) => Next() % (max - min) + min;
+    public override double NextDouble() => Next() * Sample();
+    protected override double Sample() => Next() * DoubleConvertMultiplier % 1;
 
     public uint NextUInt()
     {
         State = (Multiplier * State + Increment) % Mod;
         return (uint)State;
     }
-
-    protected override double Sample() => NextUInt() * DoubleConvertMultiplier;
 
     private void Initialization(ulong seed)
     {

@@ -1,4 +1,6 @@
-﻿namespace Tyche.Domain.Models;
+﻿using Tyche.DDD.Domain.Models.Randomness.Random;
+
+namespace Tyche.DDD.Domain.Models.Randomness.Distributions;
 
 public class NormalDistribution : AbstractContinuousDistribution
 {
@@ -11,11 +13,8 @@ public class NormalDistribution : AbstractContinuousDistribution
         Mean = mean;
     }
 
-    public override long Generate(Random random, long minValue, long maxValue)
-        => (long)MakeDistributionValue(random.Next((int)minValue, (int)maxValue), random.Next((int)minValue, (int)maxValue));
-
-    //public override double GenerateDouble(Random random, double minValue, double maxValue)
-    //    => MakeDistributionValue(random.NextDouble(minValue, maxValue), random.NextDouble(minValue, maxValue));
+    public override double Generate(System.Random random, long minValue, long maxValue)
+        => MakeDistributionValue(random.NextDouble((int)minValue, (int)maxValue), random.NextDouble((int)minValue, (int)maxValue));
 
     protected override double MakeDistributionValue(double value)
     {
