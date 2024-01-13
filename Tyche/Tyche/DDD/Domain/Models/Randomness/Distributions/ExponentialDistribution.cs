@@ -3,7 +3,6 @@
 public class ExponentialDistribution : AbstractContinuousDistribution
 {
     public readonly double Lambda;
-
     public ExponentialDistribution(double lambda = 1.0)
     {
         Lambda = lambda;
