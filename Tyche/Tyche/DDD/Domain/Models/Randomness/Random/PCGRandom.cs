@@ -1,18 +1,19 @@
-﻿using System;
+﻿using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tyche.Domain.Models
+namespace Tyche.DDD.Domain.Models.Randomness.Random
 {
-    public class PCGRandom : Random
+    public class PCGRandom : System.Random
     {
         private ulong State { get; set; }
 
         private const ulong Multiplier = 6364136223846793005ul;
         private const ulong Increment = 1442695040888963407ul | 1;
-        private const double DoubleConvertMultiplier = 1.0d / Multiplier;
+        private const double DoubleConvertMultiplier = 1.0d / Multiplier * 10000000000;
 
         public PCGRandom() : this((ulong)Environment.TickCount64) { }
 
@@ -20,7 +21,9 @@ namespace Tyche.Domain.Models
 
         public override int Next() => (int)(NextUInt() >>> 1);
 
-        public override int Next(int min, int max) => (Next() % (max - min + 1)) + min;
+        public override int Next(int min, int max) => Next() % (max - min) + min;
+
+        public override double NextDouble() => Next() * Sample();
 
         public uint NextUInt()
         {
@@ -33,7 +36,7 @@ namespace Tyche.Domain.Models
             return (uint)oldState >>> rotationCount | (uint)oldState << (-rotationCount & 31);
         }
 
-        protected override double Sample() => NextUInt() * DoubleConvertMultiplier;
+        protected override double Sample() => Next() * DoubleConvertMultiplier % 1;
 
         private void Initialization(ulong seed)
         {
