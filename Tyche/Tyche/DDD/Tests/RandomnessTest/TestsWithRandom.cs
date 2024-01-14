@@ -21,7 +21,7 @@ namespace Tyche.Domain.Tests.RandomnessData
             where TDistribution : AbstractContinuousDistribution
         {
             return Enumerable.Range(0, count)
-                .Select(_ => distribution.Generate(random, 0, 100000))
+                .Select(_ => distribution.Generate(random, 0, 1))
                 .ToList();
         }
 
@@ -48,16 +48,16 @@ namespace Tyche.Domain.Tests.RandomnessData
                 GenerateRandomValues(new UniformDistribution(), random, countValues),
                 defaultPath + "\\UniformDistribution.csv");
 
-            /*WriteValuesToCsv(
+            WriteValuesToCsv(
                 GenerateRandomValues(new ExponentialDistribution(), random, countValues),
                 defaultPath + "\\ExponentialDistribution.csv");
 
             WriteValuesToCsv(
                 GenerateRandomValues(new NormalDistribution(), random, countValues),
-                defaultPath + "\\NormalDistribution.csv");*/
+                defaultPath + "\\NormalDistribution.csv");
         }
 
-        public void Main()
+        public void ToCSV()
         {
             Type[] typesRandom = {
                 typeof(LCGRandom),
