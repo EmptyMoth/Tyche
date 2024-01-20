@@ -59,8 +59,7 @@
 
 **TODO**
 =====================    
-14.01 - Доработка инфраструктурного кода и его перенос из DDD/Tests в DDD/Infrastructure.  
-Изменение SettingsForm и MainForm для соответствия DI паттерну.
+20.01 - Изменение SettingsForm и MainForm для соответствия DI паттерну.
 
 
 
