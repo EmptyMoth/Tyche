@@ -1,4 +1,4 @@
-﻿namespace Tyche.Domain.GUI
+﻿namespace Tyche.DDD.GUI
 {
     partial class SettingsForm
     {

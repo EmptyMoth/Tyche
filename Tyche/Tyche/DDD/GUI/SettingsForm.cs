@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Tyche.DDD.Application;
 
-namespace Tyche.Domain.GUI
+namespace Tyche.DDD.GUI
 {
     public partial class SettingsForm : Form, IObservable<Form>
     {

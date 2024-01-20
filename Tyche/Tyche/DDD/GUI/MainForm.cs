@@ -1,13 +1,12 @@
 using static System.Net.Mime.MediaTypeNames;
 using Ninject.Modules;
 using Ninject;
-using Tyche.Domain.GUI;
 using System;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Runtime.CompilerServices;
 using Tyche.DDD.Application;
 
-namespace Tyche.Domain.GUI;
+namespace Tyche.DDD.GUI;
 
 public partial class MainForm : Form, IObservable<Form>
 {
@@ -27,6 +26,10 @@ public partial class MainForm : Form, IObservable<Form>
         observers = new List<IObserver<Form>>();
         subscriptions = new List<Subscription<Form>>();
         InitializeComponent();
+        toolTip_InputHelp.SetToolTip(button_InputHelp,
+    "Constraints are applied to the input parameter, not the result." +
+    " \n Example: f(x) = 5x * 2. The result will not be in the specified range, " +
+    "but the x parameter will be.");
         FillRandomInformation();
         FillDistributionInformation();
         SelectDefaultValues();
@@ -118,14 +121,5 @@ public partial class MainForm : Form, IObservable<Form>
     private void textBox_Answer_TextChanged(object sender, EventArgs e)
     {
 
-    }
-}
-
-public class GuiModule : NinjectModule
-{
-    public override void Load()
-    {
-        Bind<MainForm>().ToSelf();
-        Bind<SettingsForm>().ToSelf();
     }
 }

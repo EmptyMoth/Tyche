@@ -1,7 +1,7 @@
 using Ninject;
 using System.ComponentModel;
 using Tyche.DDD.Application;
-using Tyche.Domain.GUI;
+using Tyche.DDD.GUI;
 using Tyche.Properties;
 
 namespace Tyche;

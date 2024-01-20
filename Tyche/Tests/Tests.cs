@@ -1,7 +1,7 @@
 using Tyche;
 using Tyche.DDD.Application;
 using Ninject;
-using Tyche.Domain.GUI;
+using Tyche.DDD.GUI;
 using System.Reflection;
 using System.Collections.Generic;
 using Castle.DynamicProxy.Generators.Emitters;

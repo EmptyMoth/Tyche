@@ -1,4 +1,4 @@
-﻿namespace Tyche.Domain.GUI;
+﻿namespace Tyche.DDD.GUI;
 
 partial class MainForm
 {
@@ -29,6 +29,7 @@ partial class MainForm
     /// </summary>
     private void InitializeComponent()
     {
+        components = new System.ComponentModel.Container();
         comboBox_Random = new ComboBox();
         label_Random = new Label();
         textBox_Description = new TextBox();
@@ -45,6 +46,8 @@ partial class MainForm
         numericUpDown_Max = new NumericUpDown();
         button_Settings = new Button();
         label_Limitations = new Label();
+        button_InputHelp = new Button();
+        toolTip_InputHelp = new ToolTip(components);
         ((System.ComponentModel.ISupportInitialize)numericUpDown_Min).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown_Max).BeginInit();
         SuspendLayout();
@@ -120,7 +123,7 @@ partial class MainForm
         // 
         button_Generate.Location = new Point(15, 284);
         button_Generate.Name = "button_Generate";
-        button_Generate.Size = new Size(242, 40);
+        button_Generate.Size = new Size(196, 40);
         button_Generate.TabIndex = 9;
         button_Generate.Text = "GENERATE DISTRIBUTION VALUE";
         button_Generate.UseVisualStyleBackColor = true;
@@ -189,7 +192,7 @@ partial class MainForm
         // 
         button_Settings.BackgroundImage = Properties.Resources.settings;
         button_Settings.BackgroundImageLayout = ImageLayout.Stretch;
-        button_Settings.Location = new Point(263, 284);
+        button_Settings.Location = new Point(217, 284);
         button_Settings.Name = "button_Settings";
         button_Settings.Size = new Size(40, 40);
         button_Settings.TabIndex = 17;
@@ -206,11 +209,27 @@ partial class MainForm
         label_Limitations.TabIndex = 18;
         label_Limitations.Text = "Limitations for input x [  ;  )";
         // 
+        // button_InputHelp
+        // 
+        button_InputHelp.BackgroundImage = Properties.Resources.Help;
+        button_InputHelp.BackgroundImageLayout = ImageLayout.Stretch;
+        button_InputHelp.Location = new Point(263, 284);
+        button_InputHelp.Name = "button_InputHelp";
+        button_InputHelp.Size = new Size(40, 40);
+        button_InputHelp.TabIndex = 19;
+        button_InputHelp.UseVisualStyleBackColor = true;
+        // 
+        // toolTip_InputHelp
+        // 
+        toolTip_InputHelp.ToolTipIcon = ToolTipIcon.Info;
+        toolTip_InputHelp.ToolTipTitle = "Additional information";
+        // 
         // MainForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(333, 421);
+        Controls.Add(button_InputHelp);
         Controls.Add(label_Limitations);
         Controls.Add(button_Settings);
         Controls.Add(numericUpDown_Max);
@@ -254,4 +273,6 @@ partial class MainForm
     private NumericUpDown numericUpDown_Max;
     private Button button_Settings;
     private Label label_Limitations;
+    private Button button_InputHelp;
+    private ToolTip toolTip_InputHelp;
 }
