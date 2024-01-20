@@ -5,7 +5,7 @@
 * Межин Матвей
 * Обухов Даниил
 
-![DDD](README/Tyche.jpg)    
+![DDD](README/Tyche.png)    
 
 <hr></hr> 
 
